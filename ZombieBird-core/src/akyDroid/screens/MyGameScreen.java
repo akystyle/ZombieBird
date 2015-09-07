@@ -11,6 +11,7 @@ public class MyGameScreen implements Screen{
 
 	MyGameWorld gameWorld;
 	MyGameRenderer gameRenderer;
+	float myRunTime=0;
 	
 	public MyGameScreen(){
 		float screenHeight = Gdx.graphics.getHeight();
@@ -20,16 +21,16 @@ public class MyGameScreen implements Screen{
 		
 		int midPointY = (int) (gameHeight/2);
 		
-		Gdx.app.log("MyGameScreen", "Constructor Called and screen attached");
+		//Gdx.app.log("MyGameScreen", "Constructor Called and screen attached");
 		gameWorld = new MyGameWorld(midPointY);
-		gameRenderer = new MyGameRenderer(gameWorld);
+		gameRenderer = new MyGameRenderer(gameWorld, (int)gameHeight, midPointY);
 		
 		Gdx.input.setInputProcessor(new MyInputHandler(gameWorld.getBird()));
 	}
 	
 	@Override
 	public void show() {
-		Gdx.app.log("MyGameScreen", "Show Called ");
+		//Gdx.app.log("MyGameScreen", "Show Called ");
 	}
 
 	@Override
@@ -39,36 +40,35 @@ public class MyGameScreen implements Screen{
         // Fills the screen with the selected color
         //Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         //Gdx.app.log("MyGameScreen FPS: ", (1/delta) + "");
-        
-        gameWorld.update(delta);
-        gameRenderer.render();
-        
 
+		myRunTime += delta;
+        gameWorld.update(delta);
+        gameRenderer.render(myRunTime);
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		Gdx.app.log("MyGameScreen", "resizing");
+		//Gdx.app.log("MyGameScreen", "resizing");
 
 	}
 
 	@Override
 	public void pause() {
-		Gdx.app.log("MyGameScreen", "Pause Called");
+		//Gdx.app.log("MyGameScreen", "Pause Called");
 	}
 
 	@Override
 	public void resume() {
-		Gdx.app.log("MyGameScreen", "Resume Called ");
+		//Gdx.app.log("MyGameScreen", "Resume Called ");
 	}
 
 	@Override
 	public void hide() {
-		Gdx.app.log("MyGameScreen", "Hide Called ");
+		//Gdx.app.log("MyGameScreen", "Hide Called ");
 	}
 
 	@Override
 	public void dispose() {
-		Gdx.app.log("MyGameScreen", "Dispose Called ");
+		//Gdx.app.log("MyGameScreen", "Dispose Called ");
 	}
 }

@@ -11,7 +11,7 @@ public class MyBird {
 	float rotation;
 	int height,width;
 	
-	public MyBird(float x, float y, int height, int width){
+	public MyBird(float x, float y, int width, int height){
 		this.width = width;
 		this.height = height;
 		position = new Vector2(x,y);

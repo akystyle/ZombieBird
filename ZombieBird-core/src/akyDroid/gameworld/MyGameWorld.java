@@ -2,8 +2,6 @@ package akyDroid.gameworld;
 
 import akyDroid.gameobjects.MyBird;
 
-import com.badlogic.gdx.Gdx;
-
 public class MyGameWorld {
 
 	MyBird myBird;
@@ -13,7 +11,7 @@ public class MyGameWorld {
 	}
 	
 	public void update(float delta){
-		Gdx.app.log("MyGameWorld","Update called");
+		//Gdx.app.log("MyGameWorld","Update called");
 		myBird.update(delta);
 	}
 	
