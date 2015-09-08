@@ -29,7 +29,7 @@ public class Scrollable {
 		isScrolledLeft = false;
 	}
 	
-	public boolean isSrolledLeft(){
+	public boolean isScrolledLeft(){
 		return isScrolledLeft;
 	}
 	
