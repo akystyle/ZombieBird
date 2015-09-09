@@ -7,6 +7,7 @@ import akyDroid.gameobjects.Pipe;
 import akyDroid.gameobjects.ScrollHandler;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -84,17 +85,22 @@ public class MyGameRenderer {
 		myShapeRenderer.rect(0, 0, 136, midPointY + 66);
 		myShapeRenderer.setColor(111 / 255.0f, 186 / 255.0f, 45 / 255.0f, 1);
 		myShapeRenderer.rect(0, midPointY + 66, 136, 11);
-		myShapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);
-		myShapeRenderer.rect(0, midPointY + 77, 136, 52);
 		myShapeRenderer.end();
 
 		mySpriteBatch.begin();
 		mySpriteBatch.disableBlending();
 		mySpriteBatch.draw(myBG, 0, midPointY + 23, 136, 43);
 
-		drawGrass();
 		drawPipes();
+		drawGrass();
+		mySpriteBatch.end();
 
+		myShapeRenderer.begin(ShapeType.Filled);
+		myShapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);
+		myShapeRenderer.rect(0, midPointY + 77, 136, 52);
+		myShapeRenderer.end();
+
+		mySpriteBatch.begin();
 		mySpriteBatch.enableBlending();
 
 		drawSkulls();
@@ -111,6 +117,7 @@ public class MyGameRenderer {
 					myBird.getHeight(), 1, 1, myBird.getRotation());
 		}
 		mySpriteBatch.end();
+		myShapeRenderer.end();
 	}
 
 	public void drawGrass() {
@@ -151,7 +158,7 @@ public class MyGameRenderer {
 		mySpriteBatch.draw(myBar, myPipe2.getX(),
 				myPipe2.getY() + myPipe2.getHeight() + 45, myPipe2.getWidth(),
 				midPointY + 66 - (myPipe2.getHeight()));
-		
+
 		mySpriteBatch.draw(myBar, myPipe3.getX(), myPipe3.getY(),
 				myPipe3.getWidth(), myPipe3.getHeight());
 		mySpriteBatch.draw(myBar, myPipe3.getX(),

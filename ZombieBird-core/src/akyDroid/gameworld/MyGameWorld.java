@@ -1,5 +1,6 @@
 package akyDroid.gameworld;
 
+import akyDroid.frameworkhelpers.MyAssetLoader;
 import akyDroid.gameobjects.MyBird;
 import akyDroid.gameobjects.ScrollHandler;
 
@@ -7,6 +8,7 @@ public class MyGameWorld {
 
 	MyBird myBird;
 	ScrollHandler myScroller;
+	boolean isAlive = true;
 	
 	public MyGameWorld(int midPointY){
 		myBird = new MyBird(33,midPointY-5,17,12);
@@ -17,6 +19,12 @@ public class MyGameWorld {
 		//Gdx.app.log("MyGameWorld","Update called");
 		myBird.update(delta);
 		myScroller.update(delta);
+		
+		if(isAlive && myScroller.collides(myBird)){
+			myScroller.stop();
+			MyAssetLoader.dead.play();
+			isAlive = false;
+		}
 	}
 	
 	public MyBird getBird(){

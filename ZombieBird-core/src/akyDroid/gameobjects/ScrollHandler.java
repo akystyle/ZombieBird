@@ -12,9 +12,9 @@ public class ScrollHandler {
 		myFrontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
 		myBackGrass = new Grass(myFrontGrass.getTailX(), yPos, 143, 11, SCROLL_SPEED);
 
-		myPipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED);
-		myPipe2 = new Pipe(myPipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED);
-		myPipe3 = new Pipe(myPipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED);
+		myPipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED,yPos);
+		myPipe2 = new Pipe(myPipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,yPos);
+		myPipe3 = new Pipe(myPipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED,yPos);
 	}
 	
 	public void update(float delta){
@@ -36,6 +36,18 @@ public class ScrollHandler {
 			myFrontGrass.reset(myBackGrass.getTailX());
 		if(myBackGrass.isScrolledLeft())
 			myBackGrass.reset(myFrontGrass.getTailX());
+	}
+	
+	public void stop(){
+		myPipe1.stop();
+		myPipe2.stop();
+		myPipe3.stop();
+		myFrontGrass.stop();
+		myBackGrass.stop();
+	}
+	
+	public boolean collides(MyBird myBird){
+		return (myPipe1.collides(myBird) || myPipe2.collides(myBird) || myPipe3.collides(myBird));
 	}
 
 	public Grass getMyFrontGrass() {

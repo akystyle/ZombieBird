@@ -1,6 +1,7 @@
 package akyDroid.frameworkhelpers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -13,6 +14,8 @@ public class MyAssetLoader {
 	
 	public static Animation myBirdAnimation;
 	public static TextureRegion myBird,myBirdDown,myBirdUp;
+	
+	public static Sound dead; 
 	
 	public static TextureRegion mySkullUp, mySkullDown, myBar;
 	
@@ -46,6 +49,7 @@ public class MyAssetLoader {
 		myBar = new TextureRegion(myTexture,136,16,22,3);
 		myBar.flip(false, true);
 		
+		dead = Gdx.audio.newSound(Gdx.files.internal("data/dead.wav"));
 	}
 	
 	public static void dispose(){
