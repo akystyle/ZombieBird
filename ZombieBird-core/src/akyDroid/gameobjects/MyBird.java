@@ -35,6 +35,12 @@ public class MyBird {
 		if(velocity.y > 200){
 			velocity.y = 200;
 		}
+		
+		if(position.y < -2){
+			position.y = -2;
+			velocity.y = 0;
+		}
+		
 		position.add(velocity.cpy().scl(delta));
 		myBoundingCircle.set(position.x + 9,position.y+6,6.5f);
 		
@@ -96,7 +102,6 @@ public class MyBird {
 	public void die() {
 		isAlive = false;
 		velocity.y = 0;
-		MyAssetLoader.dead.play();
 	}
 
 	public void decelerate() {
@@ -105,5 +110,15 @@ public class MyBird {
 	
 	public boolean isAlive(){
 		return isAlive;
+	}
+
+	public void onRestart(int i){
+		rotation = 0;
+		position.y = i;
+		velocity.x = 0;
+		velocity.y = 0;
+		acceleration.x = 0;
+		acceleration.y = 460;
+		isAlive = true;
 	}
 }

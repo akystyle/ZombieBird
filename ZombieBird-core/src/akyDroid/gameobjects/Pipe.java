@@ -66,4 +66,8 @@ public class Pipe extends Scrollable{
 	public Rectangle getBarDown() {
 		return barDown;
 	}
+
+	public void onRestart(float i, int scrollSpeed) {
+		
+	}
 }
