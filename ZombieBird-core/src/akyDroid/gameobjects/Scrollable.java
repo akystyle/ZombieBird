@@ -7,6 +7,7 @@ public class Scrollable {
 	protected Vector2 myPosition, myVelocity;
 	protected int myWidth,myHeight;
 	protected boolean isScrolledLeft;
+	boolean scored;
 	
 	public Scrollable(float x,float y,int width,int height,float scrollSpeed){
 		myPosition = new Vector2(x,y);
@@ -14,6 +15,7 @@ public class Scrollable {
 		myWidth = width;
 		myHeight = height;
 		isScrolledLeft = false;
+		scored = false;
 	}
 	
 	public void update(float delta){
@@ -31,6 +33,15 @@ public class Scrollable {
 	public void reset(float newX){
 		myPosition.x = newX;
 		isScrolledLeft = false;
+		scored = false;
+	}
+	
+	public void setScored(boolean scored){
+		this.scored = scored;
+	}
+	
+	public boolean isScored(){
+		return scored;
 	}
 	
 	public boolean isScrolledLeft(){

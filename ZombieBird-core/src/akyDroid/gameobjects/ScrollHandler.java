@@ -1,14 +1,20 @@
 package akyDroid.gameobjects;
 
+import akyDroid.frameworkhelpers.MyAssetLoader;
+import akyDroid.gameworld.MyGameWorld;
+
 public class ScrollHandler {
 
 	Grass myFrontGrass, myBackGrass;
 	Pipe myPipe1,myPipe2,myPipe3;
+	MyGameWorld myWorld;
+	int score = 0;
 	
 	public static final int SCROLL_SPEED = -59;
 	public static final int PIPE_GAP = 49;
 	
-	public ScrollHandler(float yPos){
+	public ScrollHandler(MyGameWorld myWorld, float yPos){
+		this.myWorld = myWorld;
 		myFrontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
 		myBackGrass = new Grass(myFrontGrass.getTailX(), yPos, 143, 11, SCROLL_SPEED);
 
@@ -47,7 +53,26 @@ public class ScrollHandler {
 	}
 	
 	public boolean collides(MyBird myBird){
+		
+		if(!myPipe1.isScored() && myPipe1.getX() + (myPipe1.getWidth()/2) < myBird.getX() + myBird.getWidth()){
+			addScore(1);
+			myPipe1.setScored(true);
+			MyAssetLoader.coin.play();
+		} else if(!myPipe2.isScored() && myPipe2.getX() + (myPipe2.getWidth()/2) < myBird.getX() + myBird.getWidth()){
+			addScore(1);
+			myPipe2.setScored(true);
+			MyAssetLoader.coin.play();
+		} else if(!myPipe3.isScored() && myPipe3.getX() + (myPipe3.getWidth()/2) < myBird.getX() + myBird.getWidth()){
+			addScore(1);
+			myPipe3.setScored(true);
+			MyAssetLoader.coin.play();
+		}
+		
 		return (myPipe1.collides(myBird) || myPipe2.collides(myBird) || myPipe3.collides(myBird));
+	}
+
+	private void addScore(int i) {
+		myWorld.addScore(i);
 	}
 
 	public Grass getMyFrontGrass() {
@@ -69,5 +94,4 @@ public class ScrollHandler {
 	public Pipe getMyPipe3() {
 		return myPipe3;
 	}
-	
 }

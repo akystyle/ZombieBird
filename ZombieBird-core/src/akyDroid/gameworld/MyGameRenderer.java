@@ -7,7 +7,6 @@ import akyDroid.gameobjects.Pipe;
 import akyDroid.gameobjects.ScrollHandler;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -116,6 +115,12 @@ public class MyGameRenderer {
 					myBird.getHeight() / 2.0f, myBird.getWidth(),
 					myBird.getHeight(), 1, 1, myBird.getRotation());
 		}
+		
+		String score = myGameWorld.getScore() + "";
+		
+		MyAssetLoader.myFontShadow.draw(mySpriteBatch, "" + myGameWorld.getScore(), (136/2) - (3 * score.length()), 12);
+		MyAssetLoader.myFont.draw(mySpriteBatch, "" + myGameWorld.getScore(), (136/2) - (3 * score.length()), 11);
+		
 		mySpriteBatch.end();
 		myShapeRenderer.end();
 	}

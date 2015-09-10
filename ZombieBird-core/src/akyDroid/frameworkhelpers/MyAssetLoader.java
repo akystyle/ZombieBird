@@ -17,7 +17,7 @@ public class MyAssetLoader {
 	public static TextureRegion myBird,myBirdDown,myBirdUp;
 	public static TextureRegion mySkullUp, mySkullDown, myBar;
 	
-	public static Sound dead; 
+	public static Sound dead,flap,coin; 
 	
 	public static BitmapFont myFont,myFontShadow;
 	
@@ -52,10 +52,13 @@ public class MyAssetLoader {
 		myBar.flip(false, true);
 		
 		dead = Gdx.audio.newSound(Gdx.files.internal("data/dead.wav"));
+		flap = Gdx.audio.newSound(Gdx.files.internal("data/flap.wav"));
+		coin = Gdx.audio.newSound(Gdx.files.internal("data/coin.wav"));
+		
 		myFont = new BitmapFont(Gdx.files.internal("data/text.fnt"));
-		//myFont.setScale(.25f,-.25f);
+		myFont.getData().setScale(.25f, -.25f);
 		myFontShadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
-		//myFontShadow.setScale(.25,-.25f);
+		myFontShadow.getData().setScale(.25f,-.25f);
 		
 	}
 	
