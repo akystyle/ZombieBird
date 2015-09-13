@@ -23,9 +23,9 @@ public class MyGameScreen implements Screen{
 		
 		//Gdx.app.log("MyGameScreen", "Constructor Called and screen attached");
 		gameWorld = new MyGameWorld(midPointY);
-		gameRenderer = new MyGameRenderer(gameWorld, (int)gameHeight, midPointY);
 		
-		Gdx.input.setInputProcessor(new MyInputHandler(gameWorld));
+		Gdx.input.setInputProcessor(new MyInputHandler(gameWorld,screenWidth/gameWidth, screenHeight/gameHeight));
+		gameRenderer = new MyGameRenderer(gameWorld, (int)gameHeight, midPointY);
 	}
 	
 	@Override
@@ -43,7 +43,7 @@ public class MyGameScreen implements Screen{
 
 		myRunTime += delta;
         gameWorld.update(delta);
-        gameRenderer.render(myRunTime);
+        gameRenderer.render(delta, myRunTime);
 	}
 
 	@Override

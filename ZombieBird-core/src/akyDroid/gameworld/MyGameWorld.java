@@ -13,24 +13,29 @@ public class MyGameWorld {
 	ScrollHandler myScroller;
 	Rectangle myGround;
 	int score = 0;
-	myGameState currentState;
+	float myRunTime = 0;
 	public int midPointY;
 	
+	myGameState currentState;
+	
 	public enum myGameState{
-		READY,RUNNING,GAMEOVER,HIGHSCORE
+		MENU,READY,RUNNING,GAMEOVER,HIGHSCORE
 	}
 	
 	public MyGameWorld(int midPointY){
+		currentState = myGameState.MENU;
+		this.midPointY = midPointY;
 		myBird = new MyBird(33,midPointY-5,17,12);
 		myScroller = new ScrollHandler(this,midPointY+66);
-		myGround = new Rectangle(0,midPointY + 66, 136,11);
-		currentState = myGameState.READY;
-		this.midPointY = midPointY;
+		myGround = new Rectangle(0,midPointY + 66, 137,11);
 	}
 	
 	public void update(float delta){
+		myRunTime += delta;
+		
 		switch(currentState){
 		case READY:
+		case MENU: 
 			updateReady(delta);
 			break;
 			
@@ -44,7 +49,8 @@ public class MyGameWorld {
 	}
 	
 	private void updateReady(float delta) {
-		
+		myBird.updateReady(myRunTime);
+		myScroller.updateReady(delta);
 	}
 
 	public void updateRunning(float delta){
@@ -84,6 +90,9 @@ public class MyGameWorld {
 		return myScroller;
 	}
 	
+	public int getMidPointY(){
+		return midPointY;
+	}
 
 	public int getScore(){
 		return score;
@@ -108,6 +117,10 @@ public class MyGameWorld {
 		currentState = myGameState.RUNNING;
 	}
 	
+	public void ready(){
+		currentState = myGameState.READY;
+	}
+	
 	public boolean isGameOver(){
 		return currentState == myGameState.GAMEOVER;
 	}
@@ -115,4 +128,13 @@ public class MyGameWorld {
 	public boolean isHighScore(){
 		return currentState == myGameState.HIGHSCORE;
 	}
+	
+	public boolean isMenu(){
+		return currentState == myGameState.MENU;
+	}
+	
+	public boolean isRunning (){
+		return currentState == myGameState.RUNNING;
+	}
+	
 }

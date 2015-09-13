@@ -33,15 +33,26 @@ public class ScrollHandler {
 		
 		if(myPipe1.isScrolledLeft())
 			myPipe1.reset(myPipe3.getTailX() + PIPE_GAP);
-		if(myPipe2.isScrolledLeft())
+		else if(myPipe2.isScrolledLeft())
 			myPipe2.reset(myPipe1.getTailX() + PIPE_GAP);		
-		if(myPipe3.isScrolledLeft())
+		else if(myPipe3.isScrolledLeft())
 			myPipe3.reset(myPipe2.getTailX() + PIPE_GAP);
 		
 		if(myFrontGrass.isScrolledLeft())
 			myFrontGrass.reset(myBackGrass.getTailX());
 		if(myBackGrass.isScrolledLeft())
 			myBackGrass.reset(myFrontGrass.getTailX());
+	}
+	
+	public void updateReady(float delta){
+		myFrontGrass.update(delta);
+		myBackGrass.update(delta);
+		
+		if(myFrontGrass.isScrolledLeft()){
+			myFrontGrass.reset(myBackGrass.getTailX());
+		}else if(myBackGrass.isScrolledLeft()){
+			myBackGrass.reset(myFrontGrass.getTailX());
+		}
 	}
 	
 	public void stop(){

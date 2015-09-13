@@ -17,12 +17,14 @@ public class MyBird {
 	
 	float rotation;
 	int height,width;
+	float originalY;
 	
 	Circle myBoundingCircle;
 	
 	public MyBird(float x, float y, int width, int height){
 		this.width = width;
 		this.height = height;
+		originalY = y;
 		position = new Vector2(x,y);
 		velocity = new Vector2(0,0);
 		acceleration = new Vector2(0,460);
@@ -112,13 +114,17 @@ public class MyBird {
 		return isAlive;
 	}
 
-	public void onRestart(int i){
+	public void onRestart(int y){
 		rotation = 0;
-		position.y = i;
+		position.y = y;
 		velocity.x = 0;
 		velocity.y = 0;
 		acceleration.x = 0;
 		acceleration.y = 460;
 		isAlive = true;
+	}
+	
+	public void updateReady(float myRunTime){
+		position.y = 2 * (float) Math.sin(7 * myRunTime) + originalY;
 	}
 }
