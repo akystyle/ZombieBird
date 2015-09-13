@@ -1,15 +1,18 @@
 package akyDroid.frameworkhelpers;
 
 import akyDroid.gameobjects.MyBird;
+import akyDroid.gameworld.MyGameWorld;
 
 import com.badlogic.gdx.InputProcessor;
 
 public class MyInputHandler implements InputProcessor {
 
 	MyBird myBird;
+	MyGameWorld myWorld;
 
-	public MyInputHandler(MyBird bird){
-		this.myBird = bird;
+	public MyInputHandler(MyGameWorld tempWorld){
+		myWorld = tempWorld;
+		myBird = myWorld.getBird();
 	}
 	
 	@Override
@@ -32,8 +35,18 @@ public class MyInputHandler implements InputProcessor {
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+		
+		if(myWorld.isReady()){
+			
+			myWorld.start();
+		}
+		
 		myBird.onClick();
-		return false;
+		
+		if(myWorld.isGameOver() || myWorld.isHighScore()){
+			myWorld.restart();
+		}
+		return true;
 	}
 
 	@Override

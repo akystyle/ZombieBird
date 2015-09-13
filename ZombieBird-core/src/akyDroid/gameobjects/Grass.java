@@ -6,8 +6,9 @@ public class Grass extends Scrollable{
 		super(x, y, width, height, scrollSpeed);
 	}
 
-	public void onRestart(float i, int scrollSpeed) {
-		
+	public void onRestart(float x, int scrollSpeed) {
+		myPosition.x = x;
+		myVelocity.x = scrollSpeed;
 	}
 
 }

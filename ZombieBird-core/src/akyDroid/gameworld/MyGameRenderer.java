@@ -115,12 +115,50 @@ public class MyGameRenderer {
 					myBird.getHeight() / 2.0f, myBird.getWidth(),
 					myBird.getHeight(), 1, 1, myBird.getRotation());
 		}
-		
-		String score = myGameWorld.getScore() + "";
-		
-		MyAssetLoader.myFontShadow.draw(mySpriteBatch, "" + myGameWorld.getScore(), (136/2) - (3 * score.length()), 12);
-		MyAssetLoader.myFont.draw(mySpriteBatch, "" + myGameWorld.getScore(), (136/2) - (3 * score.length()), 11);
-		
+
+		if (myGameWorld.isReady()) {
+
+			MyAssetLoader.myFontShadow.draw(mySpriteBatch, "Touch To Start",
+					(136 / 2) - (61), 76);
+			MyAssetLoader.myFont.draw(mySpriteBatch, "Touch To Start",
+					(136 / 2) - (60), 75);
+		} else {
+
+			if (myGameWorld.isGameOver() || myGameWorld.isHighScore()) {
+
+				if (myGameWorld.isGameOver()){
+				
+				MyAssetLoader.myFontShadow.draw(mySpriteBatch, "Game Over",25,56);
+				MyAssetLoader.myFont.draw(mySpriteBatch, "Game Over",24,55);
+				
+				MyAssetLoader.myFontShadow.draw(mySpriteBatch, "High Score:",23,106);
+				MyAssetLoader.myFont.draw(mySpriteBatch, "High Score:",22,105);
+				
+				String highScore = MyAssetLoader.getHighScore() + "";
+				
+				MyAssetLoader.myFontShadow.draw(mySpriteBatch, highScore, (136/2) - (3 * highScore.length()), 128);
+				MyAssetLoader.myFont.draw(mySpriteBatch, highScore, (136/2) - (3 * highScore.length() - 1), 127);
+			}
+				else{
+					MyAssetLoader.myFontShadow.draw(mySpriteBatch, "High Score!",19,56);
+					MyAssetLoader.myFont.draw(mySpriteBatch, "High Score!",18,55);	
+				}
+					
+				MyAssetLoader.myFontShadow.draw(mySpriteBatch, "TrY aGAiN?",23,76);
+				MyAssetLoader.myFont.draw(mySpriteBatch, "TrY aGAiN?",24,75);
+
+			String score = myGameWorld.getScore() + "";
+
+			MyAssetLoader.myFontShadow.draw(mySpriteBatch,"" + myGameWorld.getScore(),(136 / 2) - (3 * score.length()), 12);
+			MyAssetLoader.myFont.draw(mySpriteBatch,"" + myGameWorld.getScore(),(136 / 2) - (3 * score.length()-1), 11);
+
+		}
+			
+			String score = myGameWorld.getScore() + "";
+
+			MyAssetLoader.myFontShadow.draw(mySpriteBatch,"" + myGameWorld.getScore(),(136 / 2) - (3 * score.length()), 12);
+			MyAssetLoader.myFont.draw(mySpriteBatch,"" + myGameWorld.getScore(),(136 / 2) - (3 * score.length()-1), 11);
+		}
 		mySpriteBatch.end();
 		myShapeRenderer.end();
 	}

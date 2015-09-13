@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
-	<classpathentry sourcepath="C:/Users/Goels/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.6.4/cecef47b1a565819c3991ec13d967d685605c5c0/gdx-1.6.4-sources.jar" kind="lib" path="C:/Users/Goels/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.6.4/13ed9a042554afce8c8b38c53e9b6d6d9c10600e/gdx-1.6.4.jar" exported="true"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="C:/Users/Goels/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.6.4/13ed9a042554afce8c8b38c53e9b6d6d9c10600e/gdx-1.6.4.jar" sourcepath="C:/Users/Goels/.gradle/caches/modules-2/files-2.1/com.badlogicgames.gdx/gdx/1.6.4/cecef47b1a565819c3991ec13d967d685605c5c0/gdx-1.6.4-sources.jar"/>
+	<classpathentry kind="lib" path="build/libs/tween-engine-api-sources.jar"/>
+	<classpathentry kind="lib" path="build/libs/tween-engine-api.jar"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>

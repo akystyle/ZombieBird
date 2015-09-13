@@ -49,6 +49,7 @@ public class Pipe extends Scrollable{
 	public void reset(float newX){
 		super.reset(newX);
 		myHeight = r.nextInt(90) + 15;
+		scored = false;
 	}
 
 	public Rectangle getSkullUp() {
@@ -67,7 +68,8 @@ public class Pipe extends Scrollable{
 		return barDown;
 	}
 
-	public void onRestart(float i, int scrollSpeed) {
-		
+	public void onRestart(float x, int scrollSpeed) {
+		myVelocity.x = scrollSpeed;
+		reset(x);
 	}
 }

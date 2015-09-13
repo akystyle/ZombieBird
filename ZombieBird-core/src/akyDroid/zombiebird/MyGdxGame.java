@@ -1,9 +1,9 @@
 package akyDroid.zombiebird;
 
 import akyDroid.frameworkhelpers.MyAssetLoader;
-import akyDroid.screens.MyGameScreen;
+import akyDroid.screens.MySplashScreen;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Game;
 
 public class MyGdxGame extends Game{
 
@@ -11,7 +11,7 @@ public class MyGdxGame extends Game{
 	public void create() {
 		//Gdx.app.log("MyGdxGame", "AkyDroid's myGdxGame class created as ApplicationInterface");
 		MyAssetLoader.load();
-		setScreen(new MyGameScreen());
+		setScreen(new MySplashScreen(this));
 	}
 	
 	public void dispose(){

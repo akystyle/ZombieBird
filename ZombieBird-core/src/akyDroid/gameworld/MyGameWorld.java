@@ -17,7 +17,7 @@ public class MyGameWorld {
 	public int midPointY;
 	
 	public enum myGameState{
-		READY,RUNNING,GAMEOVER;
+		READY,RUNNING,GAMEOVER,HIGHSCORE
 	}
 	
 	public MyGameWorld(int midPointY){
@@ -36,8 +36,6 @@ public class MyGameWorld {
 			
 		case RUNNING:
 			updateRunning(delta);
-			break;
-		case GAMEOVER:
 			break;
 			
 		default:
@@ -70,6 +68,11 @@ public class MyGameWorld {
 			myBird.die();
 			myBird.decelerate();
 			currentState = myGameState.GAMEOVER;
+			
+			if(score > MyAssetLoader.getHighScore()){
+				MyAssetLoader.setHighScore(score);
+				currentState = myGameState.HIGHSCORE;
+			}
 		}
 	}
 	
@@ -107,5 +110,9 @@ public class MyGameWorld {
 	
 	public boolean isGameOver(){
 		return currentState == myGameState.GAMEOVER;
+	}
+	
+	public boolean isHighScore(){
+		return currentState == myGameState.HIGHSCORE;
 	}
 }

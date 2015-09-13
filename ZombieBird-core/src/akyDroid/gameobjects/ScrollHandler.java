@@ -99,7 +99,7 @@ public class ScrollHandler {
 		myFrontGrass.onRestart(0,SCROLL_SPEED);
 		myBackGrass.onRestart( myFrontGrass.getTailX(),SCROLL_SPEED);
 		myPipe1.onRestart(210,SCROLL_SPEED);
-		myPipe2.onRestart(myPipe1.getTailX(),SCROLL_SPEED);
-		myPipe3.onRestart(myPipe2.getTailX(),SCROLL_SPEED);
+		myPipe2.onRestart(myPipe1.getTailX() + PIPE_GAP,SCROLL_SPEED);
+		myPipe3.onRestart(myPipe2.getTailX() + PIPE_GAP,SCROLL_SPEED);
 	}
 }
